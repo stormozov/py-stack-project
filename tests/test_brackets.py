@@ -17,7 +17,7 @@ class TestBrackets(unittest.TestCase):
 
         This ensures that the stack does not retain any state between test runs.
         """
-        Stack().items = []
+        Stack().items.clear()
 
     def test_is_balanced_brackets(self):
         """Tests that the stack is correctly identified as balanced or not.

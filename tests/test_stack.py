@@ -21,7 +21,7 @@ class TestStack(unittest.TestCase):
 
         This ensures that the stack does not retain any state between test runs.
         """
-        Stack().items = []
+        Stack().items.clear()
 
     def test_is_empty(self):
         """Tests that the stack is initially empty.

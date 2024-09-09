@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class Stack:
     """Implements an efficient last-in first-out (LIFO) stack Abstract Data Type
 
@@ -13,7 +16,7 @@ class Stack:
 
         The stack is initially empty.
         """
-        self.items = []
+        self.items = deque()
 
     def isEmpty(self) -> bool:
         """Check if the stack is empty.
@@ -21,7 +24,7 @@ class Stack:
         Returns:
             bool: True if the stack is empty, False otherwise.
         """
-        return self.items == []
+        return not self.items
 
     def push(self, item: object) -> None:
         """Add an item to the top of the stack.
@@ -37,7 +40,7 @@ class Stack:
         Returns:
             The item at the top of the stack.
         """
-        return None if self.isEmpty() else self.items.pop()
+        return self.items.pop() if self.items else None
 
     def peek(self) -> object:
         """Return the item at the top of the stack without removing it.
@@ -47,7 +50,7 @@ class Stack:
                 None otherwise.
         """
         if not self.isEmpty():
-            return self.items[self.size() - 1]
+            return self.items[-1] if self.items else None
 
     def size(self) -> int:
         """Return the number of items in the stack.
