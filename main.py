@@ -57,4 +57,24 @@ class Stack:
         """
         return len(self.items)
 
+    def is_balanced_brackets(self, brackets: str) -> str:
+        """Check if the input string of brackets is balanced.
 
+        Args:
+            brackets (str): A string containing brackets to be checked
+                for balance.
+
+        Returns:
+            str: 'Сбалансированно' if the brackets are balanced,
+                'Несбалансированно' otherwise.
+        """
+        bracket_map = {')': '(', '}': '{', ']': '['}
+
+        for bracket in brackets:
+            if bracket in bracket_map.values():
+                self.items.append(bracket)
+            elif bracket in bracket_map.keys():
+                if not self.items or self.items.pop() != bracket_map[bracket]:
+                    return 'Несбалансированно'
+
+        return 'Сбалансированно' if not self.items else 'Несбалансированно'
